@@ -1,0 +1,494 @@
+[
+    {
+        "id": "c2adaee309a09307",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "mqtt_broker_config",
+        "type": "mqtt-broker",
+        "name": "Local Mosquitto",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "node-red-backend",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4"
+    },
+    {
+        "id": "6182c671892ed7bc",
+        "type": "ui_group",
+        "name": "Monitoring Suhu",
+        "tab": "c9aa60ddcf944519",
+        "order": 1,
+        "disp": true,
+        "width": 6,
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "c9aa60ddcf944519",
+        "type": "ui_tab",
+        "name": "Monitoring",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "48b3f8c88cdb1f35",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "a461e5750451ab53",
+        "type": "websocket-listener",
+        "path": "/ws/suhu",
+        "wholemsg": "false"
+    },
+    {
+        "id": "aa23cd4fe893e4bb",
+        "type": "inject",
+        "z": "c2adaee309a09307",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 200,
+        "y": 160,
+        "wires": [
+            [
+                "d40c622e9ce1bc68"
+            ]
+        ]
+    },
+    {
+        "id": "d40c622e9ce1bc68",
+        "type": "function",
+        "z": "c2adaee309a09307",
+        "name": "function 1",
+        "func": "\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 380,
+        "y": 220,
+        "wires": [
+            [
+                "38cf06237f6acd7e"
+            ]
+        ]
+    },
+    {
+        "id": "38cf06237f6acd7e",
+        "type": "change",
+        "z": "c2adaee309a09307",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 520,
+        "y": 320,
+        "wires": [
+            [
+                "a084cf7826da2e43"
+            ]
+        ]
+    },
+    {
+        "id": "a084cf7826da2e43",
+        "type": "debug",
+        "z": "c2adaee309a09307",
+        "name": "debug 1",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 680,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "a232bed010ed9c12",
+        "type": "http in",
+        "z": "c2adaee309a09307",
+        "name": "API GET Suhu",
+        "url": "/api/suhu",
+        "method": "get",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 480,
+        "y": 60,
+        "wires": [
+            [
+                "7ed208607b40f9e7"
+            ]
+        ]
+    },
+    {
+        "id": "3b67b8e1545eef4c",
+        "type": "http response",
+        "z": "c2adaee309a09307",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 910,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "cb785c9ea58d31b7",
+        "type": "function",
+        "z": "c2adaee309a09307",
+        "name": "Proses Data Suhu",
+        "func": "\n// Simulasi suhu\nvar suhu = 32;\n\n// Mengambil batas suhu\nvar batas = flow.get(\"threshold\");\n\n// Batas default\nif (batas === undefined || batas === null) {\n    batas = 30;\n}\n\n// Kondisi suhu\nvar kondisi = \"NORMAL\";\nvar notifikasi = \"Suhu masih normal\";\n\nif (suhu > batas) {\n    kondisi = \"BAHAYA\";\n    notifikasi = \"PERINGATAN: Suhu melewati batas!\";\n}\n\n// Membuat respons API\nmsg.payload = {\n    status: \"success\",\n    suhu: suhu,\n    batas: batas,\n    kondisi: kondisi,\n    notifikasi: notifikasi,\n    waktu: new Date().toISOString()\n};\n\nmsg.statusCode = 200;\n\n// Mengirim hasil\nreturn msg;\n",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 850,
+        "y": 40,
+        "wires": [
+            [],
+            [
+                "3b67b8e1545eef4c"
+            ]
+        ]
+    },
+    {
+        "id": "68296e5554223f9a",
+        "type": "http in",
+        "z": "c2adaee309a09307",
+        "name": "API PUT Threshold",
+        "url": "/api/threshold",
+        "method": "put",
+        "upload": false,
+        "skipBodyParsing": false,
+        "swaggerDoc": "",
+        "x": 190,
+        "y": 420,
+        "wires": [
+            [
+                "f6646d36949a661f"
+            ]
+        ]
+    },
+    {
+        "id": "f6646d36949a661f",
+        "type": "function",
+        "z": "c2adaee309a09307",
+        "name": "Atur Batas Suhu",
+        "func": "\nlet batas = Number(msg.payload.threshold);\n\nif (!Number.isFinite(batas) || batas <= 0) {\n    msg.statusCode = 400;\n    msg.payload = {\n        status: \"error\",\n        message: \"Batas suhu tidak valid\"\n    };\n    return msg;\n}\n\nflow.set(\"threshold\", batas);\n\nmsg.payload = {\n    status: \"success\",\n    message: \"Batas suhu berhasil diubah\",\n    threshold: batas\n};\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 320,
+        "y": 500,
+        "wires": [
+            [
+                "76e280cdc8c13edd"
+            ]
+        ]
+    },
+    {
+        "id": "76e280cdc8c13edd",
+        "type": "http response",
+        "z": "c2adaee309a09307",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 470,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "1d13bbeb6e53b3ca",
+        "type": "inject",
+        "z": "c2adaee309a09307",
+        "name": "simulasi suhu",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "2",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 640,
+        "y": 440,
+        "wires": [
+            [
+                "89d13b799c69b4c5"
+            ]
+        ]
+    },
+    {
+        "id": "89d13b799c69b4c5",
+        "type": "function",
+        "z": "c2adaee309a09307",
+        "name": "Data Grafik Suhu",
+        "func": "\nvar suhu = Math.floor(Math.random() * 10) + 25;\n\nmsg.payload = suhu;\n\nreturn msg;\n",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 770,
+        "y": 560,
+        "wires": [
+            [
+                "3a1a38624e3f54e8"
+            ]
+        ]
+    },
+    {
+        "id": "3a1a38624e3f54e8",
+        "type": "ui_chart",
+        "z": "c2adaee309a09307",
+        "name": "Grafik Suhu ",
+        "group": "6182c671892ed7bc",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "Grafik Suhu Real-time",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "20",
+        "ymax": "40",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 890,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7ed208607b40f9e7",
+        "type": "function",
+        "z": "c2adaee309a09307",
+        "name": "Cek API Key",
+        "func": "const apiKey = msg.req.headers[\"x-api-key\"];\n\nconst kunciBenar = \"iot12345\";\n\nif (String(apiKey || \"\").trim() !== kunciBenar) {\n    msg.statusCode = 401;\n    msg.payload = {\n        success: false,\n        message: \"API Key tidak valid!\"\n    };\n\n    return [null, msg];\n}\n\nreturn [msg, null];",
+        "outputs": 2,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 670,
+        "y": 100,
+        "wires": [
+            [
+                "cb785c9ea58d31b7"
+            ],
+            [
+                "3b67b8e1545eef4c"
+            ]
+        ]
+    },
+    {
+        "id": "9fc2e8c8b98d2f8b",
+        "type": "http request",
+        "z": "c2adaee309a09307",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 630,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "1ae88ce2a0890bdb",
+        "type": "websocket in",
+        "z": "c2adaee309a09307",
+        "name": "Websocket Suhu",
+        "server": "a461e5750451ab53",
+        "client": "",
+        "x": 940,
+        "y": 620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "3feff635c29ffb00",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-dashboard": "3.6.6"
+        }
+    }
+]
